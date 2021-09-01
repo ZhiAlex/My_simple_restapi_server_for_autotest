@@ -4,7 +4,8 @@ You can query, add, delete and modify the list of books
 <h2>How to start</h2>
 
 1. npm install
-2. nodemon app.js
+2. npm install -g nodemon
+3. nodemon app.js
 
 <h2>Requests</h2>
 
