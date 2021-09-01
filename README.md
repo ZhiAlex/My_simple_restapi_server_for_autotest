@@ -9,7 +9,7 @@ You can query, add, delete and modify the list of books
 <h2>Requests</h2>
 
 <hX>Base Url</hX>
-<ul><li><b>http://localhost:3000</b></li></ul>
+<ul><li><b>http://localhost:3000/books</b></li></ul>
 
 <hX>Endpoints</hX>
 <ul>
