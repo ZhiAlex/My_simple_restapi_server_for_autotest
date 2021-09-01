@@ -34,16 +34,22 @@ router.get('/:id', (req, res) => {
 
 /* Add book */
 router.post('/', (req, res) =>{
-    const book = {
-        id: req.body.id || uuid(),
-        author: req.body.author || "Default author",
-        title: req.body.title || "Default title",
-    }
 
-    books.push(book);
+    if (req.body.title !== undefined) {
+        const book = {
+            id: req.body.id || uuid(),
+            author: req.body.author || "Default author",
+            title: req.body.title || "Default title",
+        }
+
+        books.push(book);
+        return res
+            .status(201)
+            .json(book);
+    }
     return res
-        .status(201)
-        .json(book);
+        .status(400)
+        .send("Title not passed");
 })
 
 /* Update book by id */
