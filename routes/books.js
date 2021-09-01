@@ -28,7 +28,7 @@ router.get('/:id', (req, res) => {
     }
     return  res
         .status(400)
-        .send("book not found by id");
+        .send("Book not found by id");
     }
 )
 
@@ -56,18 +56,23 @@ router.post('/', (req, res) =>{
 router.put('/:id', (req, res) =>{
     const bookId = req.params.id;
 
-    books.forEach(book => {
-        if (book.id === bookId){
-            book.title = req.body.title;
-            book.author = req.body.author;
-        }
-    });
-
     const book = books.find(book => book.id === bookId);
 
-    return  res
-        .status(200)
-        .json(book);
+    if (book){
+        books.forEach(book => {
+            if (book.id === bookId){
+                book.title = req.body.title;
+                book.author = req.body.author;
+            }
+        });
+
+        return  res
+            .status(200)
+            .json(book);
+    }
+    return res
+        .status(400)
+        .send("No such identifier found");
 })
 
 /* Delete book by id */
@@ -80,7 +85,7 @@ router.delete('/:id', (req, res) =>{
         return res.status(204).send();
     }
 
-    return res.status(204).send();
+    return res.status(400).send();
 })
 
 module.exports = router;
